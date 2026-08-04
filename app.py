@@ -35,7 +35,8 @@ from tensorflow.keras.preprocessing import image
 
 app = Flask(__name__)
 
-app.secret_key = "alzheimer_secret_key_2026"
+import os
+app.secret_key = os.environ.get("SECRET_KEY", "alzheimer_secret_key_2026")
 
 DATABASE = "predictions.db"
 
