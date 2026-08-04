@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+    <link rel="icon"
+          href="{{ url_for('static', filename='brain.png') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <img src="{{ url_for('static', filename='brain.png') }}"
+             class="logo"
+             alt="Brain Logo">
+
+        <h1>Alzheimer MRI Detection System</h1>
+
+    </div>
+
+    <div class="welcome">
+
+        <h2>Welcome, {{ fullname.upper() }} </h2>
+
+        <p>Use the options below to manage your account and perform MRI predictions.</p>
+
+    </div>
+
+    <div class="cards">
+
+        <a href="{{ url_for('upload') }}" class="card">
+            <h3>🧠 Predict MRI</h3>
+            <p>Upload a brain MRI image for Alzheimer's disease prediction.</p>
+        </a>
+
+        <a href="{{ url_for('history') }}" class="card">
+            <h3>📜 Prediction History</h3>
+            <p>View all your previous MRI predictions.</p>
+        </a>
+
+        <a href="{{ url_for('profile') }}" class="card">
+            <h3>👤 My Profile</h3>
+            <p>Update your personal information.</p>
+        </a>
+
+        <a href="{{ url_for('reports') }}" class="card">
+            <h3>📊 Reports</h3>
+            <p>View prediction statistics and system reports.</p>
+        </a>
+
+    </div>
+
+    <div class="summary">
+
+        <h3>Quick Summary</h3>
+
+        <p><strong>Total Predictions:</strong> {{ total_predictions }}</p>
+
+        {% if latest_prediction %}
+
+            <p><strong>Latest Result:</strong> {{ latest_prediction['prediction'] }}</p>
+
+            <p><strong>Confidence:</strong> {{ latest_prediction['confidence'] }}%</p>
+
+        {% else %}
+
+            <p>No MRI predictions have been made yet.</p>
+
+        {% endif %}
+
+    </div>
+
+    <div class="logout">
+
+        <a href="{{ url_for('logout') }}">
+
+            Logout
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

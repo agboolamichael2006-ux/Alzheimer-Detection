@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Analytics Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/report.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Alzheimer MRI Analytics Dashboard</h1>
+
+<p>System Statistics</p>
+
+<div class="cards">
+
+<div class="card">
+<h3>Total Users</h3>
+<h1>{{ total_users }}</h1>
+</div>
+
+<div class="card">
+<h3>Total Predictions</h3>
+<h1>{{ total_predictions }}</h1>
+</div>
+
+<div class="card">
+<h3>Healthy Cases</h3>
+<h1>{{ non }}</h1>
+</div>
+
+<div class="card">
+<h3>Dementia Cases</h3>
+<h1>{{ mild + moderate + very_mild }}</h1>
+</div>
+
+</div>
+
+<div class="chart-box">
+
+<canvas id="predictionChart"></canvas>
+
+</div>
+
+<div class="buttons">
+
+<a href="{{ url_for('dashboard') }}"
+class="btn">
+
+Dashboard
+
+</a>
+
+<a href="{{ url_for('history') }}"
+class="btn">
+
+History
+
+</a>
+
+<a href="{{ url_for('upload') }}"
+class="btn">
+
+Predict MRI
+
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+const ctx=document.getElementById("predictionChart");
+
+new Chart(ctx,{
+
+type:"bar",
+
+data:{
+
+labels:[
+
+"Non Demented",
+
+"Very Mild",
+
+"Mild",
+
+"Moderate"
+
+],
+
+datasets:[{
+
+label:"MRI Predictions",
+
+data:[
+
+{{ non }},
+
+{{ very_mild }},
+
+{{ mild }},
+
+{{ moderate }}
+
+]
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+
+display:false
+
+}
+
+}
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>

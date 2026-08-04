@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MRI Alzheimer Detection</title>
+
+    <link rel="icon"
+          href="{{ url_for('static', filename='brain.png') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/upload.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="header">
+
+            <img src="{{ url_for('static', filename='brain.png') }}">
+
+            <h1>MRI Alzheimer Detection System</h1>
+
+            <p>Early Detection Using Artificial Intelligence</p>
+
+        </div>
+
+        <form action="{{ url_for('predict') }}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <h2 class="section-title">
+
+                Patient Information
+
+            </h2>
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>Patient Name</label>
+
+                    <input
+                        type="text"
+                        name="patient_name"
+                        placeholder="Enter Patient Name"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Age</label>
+
+                    <input
+                        type="number"
+                        name="age"
+                        placeholder="Enter Age"
+                        required>
+
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>Gender</label>
+
+                    <select name="gender" required>
+
+                        <option value="">
+
+                            Select Gender
+
+                        </option>
+
+                        <option>Male</option>
+
+                        <option>Female</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Phone Number</label>
+
+                    <input
+                        type="text"
+                        name="phone"
+                        placeholder="080xxxxxxxx"
+                        required>
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Address</label>
+
+                <textarea
+                    name="address"
+                    placeholder="Enter Patient Address"
+                    required></textarea>
+
+            </div>
+
+            <h2 class="section-title">
+
+                MRI Scan
+
+            </h2>
+
+            <div class="upload-box">
+
+                <input
+                    type="file"
+                    name="image"
+                    accept=".jpg,.jpeg,.png"
+                    required>
+
+            </div>
+
+            <button type="submit">
+
+                Predict MRI
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

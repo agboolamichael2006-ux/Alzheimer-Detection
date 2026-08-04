@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction History</title>
+
+    <link rel="icon"
+          href="{{ url_for('static', filename='brain.png') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/history.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Patient Prediction History</h1>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Patient ID</th>
+
+                    <th>Patient Name</th>
+
+                    <th>Age</th>
+
+                    <th>Gender</th>
+
+                    <th>Phone</th>
+
+                    <th>Address</th>
+
+                    <th>Diagnosis</th>
+
+                    <th>Date</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% if history %}
+
+                {% for item in history %}
+
+                <tr>
+
+                    <td>{{ item['patient_id'] }}</td>
+
+                    <td>{{ item['patient_name'] }}</td>
+
+                    <td>{{ item['age'] }}</td>
+
+                    <td>{{ item['gender'] }}</td>
+
+                    <td>{{ item['phone'] }}</td>
+
+                    <td>{{ item['address'] }}</td>
+
+                    <td>
+
+                        {% if item['diagnosis'] == "Alzheimer Detected" %}
+
+                            <span style="color:red;font-weight:bold;">
+
+                                Alzheimer Detected
+
+                            </span>
+
+                        {% else %}
+
+                            <span style="color:green;font-weight:bold;">
+
+                                Non Demented
+
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>{{ item['prediction_date'] }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            {% else %}
+
+                <tr>
+
+                    <td colspan="8"
+                        style="text-align:center;">
+
+                        No Prediction History Available
+
+                    </td>
+
+                </tr>
+
+            {% endif %}
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <a href="{{ url_for('dashboard') }}"
+           class="btn">
+
+            Back to Dashboard
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

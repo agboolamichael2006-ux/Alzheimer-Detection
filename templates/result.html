@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction Result</title>
+
+    <link rel="icon"
+          href="{{ url_for('static', filename='brain.png') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/result.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="header">
+
+            <h1>Prediction Result</h1>
+
+            <p>AI-Based Alzheimer Disease Detection System</p>
+
+        </div>
+
+        <div class="content">
+
+            <div class="patient-info">
+
+                <h2>Patient Information</h2>
+
+                <table>
+
+                    <tr>
+                        <td><strong>Patient ID</strong></td>
+                        <td>{{ patient_id }}</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Patient Name</strong></td>
+                        <td>{{ patient_name }}</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Age</strong></td>
+                        <td>{{ age }} Years</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Gender</strong></td>
+                        <td>{{ gender }}</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Phone</strong></td>
+                        <td>{{ phone }}</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Address</strong></td>
+                        <td>{{ address }}</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <div class="image-section">
+
+                <img src="{{ url_for('static', filename='uploads/' + image) }}"
+                     alt="MRI Scan">
+
+            </div>
+
+        </div>
+
+        <div class="prediction">
+
+            {% if diagnosis == "Non Demented" %}
+
+                <h2 style="color:#16a34a;">
+                    {{ diagnosis }}
+                </h2>
+
+            {% else %}
+
+                <h2 style="color:#dc2626;">
+                    {{ diagnosis }}
+                </h2>
+
+            {% endif %}
+
+            <p>
+
+                <strong>Confidence Score:</strong>
+
+                {{ "%.2f"|format(confidence) }}%
+
+            </p>
+
+        </div>
+
+        <div class="buttons">
+
+            <a href="{{ url_for('upload') }}">
+                New Prediction
+            </a>
+
+            <a href="{{ url_for('history') }}">
+                View History
+            </a>
+
+            <a href="{{ url_for('dashboard') }}">
+                Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

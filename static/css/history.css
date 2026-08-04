@@ -1,0 +1,80 @@
+body{
+    font-family:Poppins,sans-serif;
+    background:#f5f7fb;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    padding:30px;
+}
+
+.history-card{
+    background:#fff;
+    border-radius:15px;
+    padding:30px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.logo{
+    width:80px;
+    display:block;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:15px;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+}
+
+th{
+    background:#2563eb;
+    color:white;
+}
+
+.mri-image{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.success{
+    color:#16a34a;
+    font-weight:bold;
+}
+
+.danger{
+    color:#dc2626;
+    font-weight:bold;
+}
+
+.buttons{
+    margin-top:25px;
+    text-align:center;
+}
+
+.btn{
+    display:inline-block;
+    margin:8px;
+    padding:10px 20px;
+    background:#2563eb;
+    color:#fff;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+}

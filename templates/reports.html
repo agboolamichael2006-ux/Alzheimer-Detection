@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MRI Prediction Report</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/reports.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="report-card">
+
+        <h1>MRI Prediction Report</h1>
+
+        <table class="report-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>S/N</th>
+                    <th>Description</th>
+                    <th>Value</th>
+                    <th>Percentage</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>1</td>
+
+                    <td>Total Predictions</td>
+
+                    <td>{{ total_predictions }}</td>
+
+                    <td>100%</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>2</td>
+
+                    <td>🧠 Alzheimer Detected</td>
+
+                    <td>{{ alzheimer }}</td>
+
+                    <td>
+
+                        {% if total_predictions > 0 %}
+                        {{ "%.2f"|format((alzheimer/total_predictions)*100) }}%
+                        {% else %}
+                        0%
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>3</td>
+
+                    <td>✅ Non Demented</td>
+
+                    <td>{{ non_demented }}</td>
+
+                    <td>
+
+                        {% if total_predictions > 0 %}
+                        {{ "%.2f"|format((non_demented/total_predictions)*100) }}%
+                        {% else %}
+                        0%
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <div class="buttons">
+
+            <a href="{{ url_for('dashboard') }}" class="btn">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('history') }}" class="btn">
+                History
+            </a>
+
+            <a href="{{ url_for('upload') }}" class="btn">
+                New Prediction
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

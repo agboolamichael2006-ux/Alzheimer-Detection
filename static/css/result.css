@@ -1,0 +1,157 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f8fb;
+}
+
+.container{
+    width:100%;
+    min-height:70vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.card{
+    width:820px;
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.header h1{
+    font-size:26px;
+    color:#1e3a8a;
+    margin-bottom:5px;
+}
+
+.header p{
+    font-size:14px;
+    color:#666;
+}
+
+.content{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:20px;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.patient-info{
+    background:#f8fafc;
+    border-radius:10px;
+    padding:18px;
+}
+
+.patient-info h2{
+    font-size:18px;
+    color:#2563eb;
+    margin-bottom:15px;
+}
+
+.patient-info table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.patient-info td{
+    padding:8px 5px;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+
+.patient-info td:first-child{
+    width:40%;
+}
+
+.image-section{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.image-section img{
+    width:230px;
+    height:230px;
+    object-fit:cover;
+    border-radius:12px;
+    border:2px solid #ddd;
+    background:#fff;
+}
+
+.prediction{
+    text-align:center;
+    background:#f8fafc;
+    padding:18px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+.prediction h2{
+    font-size:24px;
+    color:#16a34a;
+    margin-bottom:8px;
+}
+
+.prediction p{
+    font-size:15px;
+    color:#444;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+.buttons a{
+    text-decoration:none;
+    background:#2563eb;
+    color:#fff;
+    padding:10px 22px;
+    border-radius:8px;
+    font-size:14px;
+    transition:.3s;
+}
+
+.buttons a:hover{
+    background:#1d4ed8;
+}
+
+@media(max-width:768px){
+
+.card{
+    width:100%;
+}
+
+.content{
+    grid-template-columns:1fr;
+}
+
+.image-section img{
+    width:190px;
+    height:190px;
+}
+
+.buttons{
+    flex-direction:column;
+}
+
+.buttons a{
+    text-align:center;
+}
+
+}
